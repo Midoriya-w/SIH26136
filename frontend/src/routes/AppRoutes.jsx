@@ -4,6 +4,9 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 // Pages
 import Landing from '../pages/Landing';
 import Login from '../pages/auth/Login';
+import Register from '../pages/auth/Register';
+import PublicPages from '../pages/PublicPages';
+import Contact from '../pages/Contact';
 
 // Startup Pages
 import StartupDashboard from '../pages/startup/Dashboard';
@@ -29,6 +32,11 @@ const AppRoutes = ({ currentUser, onRoleChange }) => {
     <Routes>
       <Route path="/" element={<Landing currentUser={currentUser} onRoleChange={onRoleChange} />} />
       <Route path="/login" element={<Login currentUser={currentUser} onRoleChange={onRoleChange} />} />
+      <Route path="/register" element={<Register currentUser={currentUser} onRoleChange={onRoleChange} />} />
+      <Route path="/how-it-works" element={<PublicPages path="/how-it-works" currentUser={currentUser} onRoleChange={onRoleChange} />} />
+      <Route path="/success-stories" element={<PublicPages path="/success-stories" currentUser={currentUser} onRoleChange={onRoleChange} />} />
+      <Route path="/templates" element={<PublicPages path="/templates" currentUser={currentUser} onRoleChange={onRoleChange} />} />
+      <Route path="/contact" element={<Contact currentUser={currentUser} onRoleChange={onRoleChange} />} />
 
       {/* Startup Routes */}
       <Route path="/startup/dashboard" element={<StartupDashboard currentUser={currentUser} onRoleChange={onRoleChange} />} />

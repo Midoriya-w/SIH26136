@@ -7,6 +7,14 @@ const Navbar = ({ currentUser, onRoleChange }) => {
   const location = useLocation();
   const [lang, setLang] = useState('EN');
   const [showRoleDropdown, setShowRoleDropdown] = useState(false);
+  const [isDemoAuthenticated, setIsDemoAuthenticated] = useState(() => sessionStorage.getItem('mipp-demo-auth') === 'true');
+
+  const handleLogout = () => {
+    sessionStorage.removeItem('mipp-demo-auth');
+    setIsDemoAuthenticated(false);
+    setShowRoleDropdown(false);
+    navigate('/login');
+  };
 
   return (
     <header className="navbar-header">
@@ -26,12 +34,12 @@ const Navbar = ({ currentUser, onRoleChange }) => {
 
       {/* Main header */}
       <div className="navbar-container">
-        <RouterLink to="/" className="brand-section" aria-label="MIPP home">
-          <img src="/logo-icon.png" alt="MIPP logo" className="brand-emblem" style={{ width: 40, height: 40 }} />
+        <RouterLink to="/" className="brand-section" aria-label="Samarth home">
+          <img src="/logo-icon.png" alt="Samarth logo" className="brand-emblem" style={{ width: 40, height: 40 }} />
           <div className="brand-divider" />
           <div className="brand-meta">
-            <div style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--primary-navy)', letterSpacing: 0.4 }}>MIPP</div>
-            <div style={{ fontSize: '0.68rem', color: '#64748B', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Maharashtra Innovation Procurement Portal</div>
+            <div style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--primary-navy)', letterSpacing: 0.4 }}>Samarth</div>
+            <div style={{ fontSize: '0.68rem', color: '#64748B', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Government Innovation Procurement Portal</div>
           </div>
         </RouterLink>
 
@@ -42,13 +50,13 @@ const Navbar = ({ currentUser, onRoleChange }) => {
             <li><RouterLink to="/startup/challenges" className={`nav-item-link ${location.pathname.includes('/startup/challenges') ? 'active' : ''}`}>Browse Challenges</RouterLink></li>
             <li><RouterLink to="/success-stories" className={`nav-item-link ${location.pathname === '/success-stories' ? 'active' : ''}`}>Success Stories</RouterLink></li>
             <li><RouterLink to="/templates" className={`nav-item-link ${location.pathname === '/templates' ? 'active' : ''}`}>Templates Library</RouterLink></li>
-            <li><RouterLink to="/faq" className={`nav-item-link ${location.pathname === '/faq' ? 'active' : ''}`}>F.A.Q.</RouterLink></li>
             <li><RouterLink to="/contact" className={`nav-item-link ${location.pathname === '/contact' ? 'active' : ''}`}>Contact Us</RouterLink></li>
           </ul>
         </nav>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-          <button className="btn btn-outline" onClick={() => navigate('/login')}>LOGIN</button>
+          {!isDemoAuthenticated && <button className="btn btn-outline" onClick={() => navigate('/login')}>LOGIN</button>}
+          {!isDemoAuthenticated && <button className="btn btn-apply" onClick={() => navigate('/register')}>REGISTER</button>}
           <RouterLink to="/government/create-challenge" className="btn btn-apply">POST A CHALLENGE</RouterLink>
 
           <div style={{ position: 'relative' }}>
@@ -61,9 +69,9 @@ const Navbar = ({ currentUser, onRoleChange }) => {
 
             {showRoleDropdown && (
               <div style={{ position: 'absolute', right: 0, top: '110%', width: 260, background: '#fff', borderRadius: 12, boxShadow: '0 10px 25px rgba(0,0,0,0.12)', padding: 8 }}>
-                <RouterLink to="/login" onClick={() => setShowRoleDropdown(false)} style={{ display: 'flex', alignItems: 'center', gap: 8, color: '#C53030', fontWeight: 700 }}>
+                <button onClick={handleLogout} style={{ display: 'flex', alignItems: 'center', gap: 8, color: '#C53030', fontWeight: 700, border: 'none', background: 'transparent', padding: 0 }}>
                   <LogOut size={14} /> Re-authenticate / Logout
-                </RouterLink>
+                </button>
               </div>
             )}
           </div>
