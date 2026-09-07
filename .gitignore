@@ -1,4 +1,5 @@
 # Python
+ teamb2
 __pycache__/
 *.py[cod]
 .pytest_cache/
@@ -16,3 +17,31 @@ Backend/storage/proofs/*
 # Frontend dependencies and builds
 Frontend/node_modules/
 Frontend/dist/
+
+backend/venv/
+backend/__pycache__/
+backend/**/__pycache__/
+backend/*.py[cod]
+backend/**/*.py[cod]
+
+# Environment
+backend/.env
+backend/.env.*
+!backend/.env.example
+
+# Python testing
+backend/.pytest_cache/
+backend/.coverage
+backend/htmlcov/
+
+# VS Code
+.vscode/
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+
+# OS
+.DS_Store
+Thumbs.db
+ main
