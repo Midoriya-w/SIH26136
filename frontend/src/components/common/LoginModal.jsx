@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import Button from './Button';
 
 const LoginModal = ({ open, onClose }) => {
@@ -20,7 +19,7 @@ const LoginModal = ({ open, onClose }) => {
         </div>
 
         <div>
-          <div style={{ fontSize: '0.8rem', color: '#64748B', marginBottom: 12 }}>Please use your registered Samarth credentials to log in or apply.</div>
+          <div style={{ fontSize: '0.8rem', color: '#64748B', marginBottom: 12 }}>Please use your registered MIPP credentials to log in or apply.</div>
           <label style={{ display: 'block', fontSize: 13, marginBottom: 6 }}>Email</label>
           <input style={{ width: '100%', padding: '10px 12px', borderRadius: 8, border: '1px solid var(--border-light)', marginBottom: 12 }} />
           <label style={{ display: 'block', fontSize: 13, marginBottom: 6 }}>Password</label>
@@ -30,7 +29,7 @@ const LoginModal = ({ open, onClose }) => {
             <a href="#" style={{ color: 'var(--primary-navy)', fontWeight: 600 }}>Forgot Password?</a>
           </div>
           <div style={{ textAlign: 'center', fontSize: '0.8rem', color: '#64748B' }}>
-            Don&apos;t have an account? <Link to="/register" style={{ color: 'var(--primary-navy)', fontWeight: 600 }}>Register Now</Link>
+            Don&apos;t have an account? <a href="#" style={{ color: 'var(--primary-navy)', fontWeight: 600 }}>Register Now</a>
           </div>
         </div>
       </div>

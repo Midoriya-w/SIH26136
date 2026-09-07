@@ -63,18 +63,18 @@ const Landing = ({ currentUser, onRoleChange }) => {
         {/* New Hero - left text, right illustration */}
         <section style={{ display: 'flex', gap: '1.5rem', alignItems: 'center', marginBottom: '2.5rem', flexWrap: 'wrap' }}>
           <div style={{ flex: '1 1 420px', minWidth: 320 }}>
-            <h1 style={{ fontSize: '2.6rem', fontWeight: 800, color: 'var(--primary-navy)', lineHeight: 1.05 }}>Samarth Innovation Procurement Portal</h1>
+            <h1 style={{ fontSize: '2.6rem', fontWeight: 800, color: 'var(--primary-navy)', lineHeight: 1.05 }}>Maharashtra Innovation Procurement Portal</h1>
             <p style={{ fontSize: '1.1rem', color: 'var(--text-muted)', marginTop: 12, maxWidth: 640 }}>Where government challenges meet startup solutions. Post a problem, run a low-risk pilot, and scale what works — transparently, and on merit.</p>
 
             <div style={{ display: 'flex', gap: 12, marginTop: 18, alignItems: 'center', flexWrap: 'wrap' }}>
               <button className="btn btn-apply" onClick={() => setRoleModalOpen(true)}>Post a Challenge</button>
               <button className="btn btn-outline" onClick={() => navigate('/startup/challenges')}>Browse Challenges</button>
-              <a href="#" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, color: 'var(--primary-navy)', fontWeight: 700 }}>▶ Watch: How Samarth Works (90 sec)</a>
+              <a href="#" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, color: 'var(--primary-navy)', fontWeight: 700 }}>▶ Watch: How MIPP Works (90 sec)</a>
             </div>
           </div>
 
           <div style={{ flex: '0 0 420px', minWidth: 280, display: 'flex', justifyContent: 'center' }}>
-            <img src="/hero-illustration.jpeg" alt="Hero illustration" style={{ width: '100%', maxWidth: 520 }} />
+            <img src="/hero-illustration.svg" alt="Hero illustration" style={{ width: '100%', maxWidth: 520 }} />
           </div>
         </section>
 
@@ -204,7 +204,7 @@ const Landing = ({ currentUser, onRoleChange }) => {
         </div>
 
         {/* End-to-End Process Flow Banner */}
-        <div className="process-flow-container end-to-end-flow" style={{ marginTop: '2.5rem' }}>
+        <div className="process-flow-container" style={{ marginTop: '2.5rem' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', marginBottom: '1rem', borderBottom: '1px solid #E2E8F0', paddingBottom: '0.75rem' }}>
             <div>
               <span style={{ fontSize: '0.75rem', fontWeight: 800, color: '#0056B3', background: '#EFF6FF', padding: '2px 8px', borderRadius: '4px' }}>
@@ -264,28 +264,15 @@ const Landing = ({ currentUser, onRoleChange }) => {
           
           {/* Evaluation Criteria Box */}
           <div style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: '16px', padding: '1.5rem', boxShadow: '0 4px 12px rgba(0,0,0,0.04)' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '1rem', marginBottom: '1.25rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <div style={{ width: '34px', height: '34px', borderRadius: '10px', background: '#EFF6FF', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <Sliders size={18} color="#0056B3" />
-                </div>
-                <div>
-                  <h3 style={{ fontSize: '1.15rem', color: '#0B2545' }}>Predefined Evaluation Criteria</h3>
-                  <p style={{ fontSize: '0.75rem', color: '#64748B', marginTop: '2px' }}>Every proposal is scored out of 100</p>
-                </div>
-              </div>
-              <span style={{ color: '#0056B3', background: '#EFF6FF', border: '1px solid #BFDBFE', borderRadius: '999px', padding: '4px 9px', fontSize: '0.7rem', fontWeight: 800, whiteSpace: 'nowrap' }}>100 pts</span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '1rem' }}>
+              <Sliders size={20} color="#0056B3" />
+              <h3 style={{ fontSize: '1.15rem', color: '#0B2545' }}>Predefined Evaluation Criteria</h3>
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
               {EVALUATION_CRITERIA.map((c) => (
-                <div key={c.id}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '5px' }}>
-                    <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#0B2545' }}>{c.label}</span>
-                    <span style={{ fontSize: '0.725rem', color: '#0056B3', fontWeight: 800 }}>{c.weight}%</span>
-                  </div>
-                  <div style={{ height: '7px', background: '#EAF0F7', borderRadius: '999px', overflow: 'hidden' }}>
-                    <div style={{ width: `${c.weight * 5}%`, height: '100%', background: c.weight === 20 ? '#0056B3' : '#65A30D', borderRadius: '999px' }} />
-                  </div>
+                <div key={c.id} style={{ background: '#F8FAFC', padding: '0.75rem', borderRadius: '8px', border: '1px solid #E2E8F0' }}>
+                  <div style={{ fontSize: '0.8rem', fontWeight: 700, color: '#0B2545' }}>{c.label}</div>
+                  <div style={{ fontSize: '0.725rem', color: '#0056B3', fontWeight: 800 }}>Weight: {c.weight}%</div>
                 </div>
               ))}
             </div>
@@ -293,32 +280,27 @@ const Landing = ({ currentUser, onRoleChange }) => {
 
           {/* Random Allocation Logic Box */}
           <div style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: '16px', padding: '1.5rem', boxShadow: '0 4px 12px rgba(0,0,0,0.04)' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '0.35rem' }}>
-              <div style={{ width: '34px', height: '34px', borderRadius: '10px', background: '#F3E8FF', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Shield size={18} color="#7C3AED" />
-              </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '1rem' }}>
+              <Shield size={20} color="#7C3AED" />
               <h3 style={{ fontSize: '1.15rem', color: '#0B2545' }}>Multi-Expert Random Allocation</h3>
             </div>
-            <div style={{ fontSize: '0.825rem', color: '#475569', margin: '0 0 1rem 42px', lineHeight: 1.4 }}>
-              Three independent reviewers create a balanced score and reduce conflicts of interest.
+            <div style={{ fontSize: '0.825rem', color: '#475569', marginBottom: '1rem', lineHeight: 1.4 }}>
+              Every proposal is randomly allocated to 3 independent domain experts to ensure zero conflict of interest and balanced scoring:
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', background: '#F8FAFC', border: '1px solid #E2E8F0', padding: '8px 10px', borderRadius: '10px', fontSize: '0.8rem' }}>
-                <span style={{ width: '24px', height: '24px', borderRadius: '50%', background: '#0056B3', color: '#FFFFFF', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.7rem', fontWeight: 800 }}>01</span>
-                <div><strong style={{ color: '#1E40AF', display: 'block' }}>Technical Expert</strong><span style={{ color: '#64748B' }}>Feasibility & readiness</span></div>
+              <div style={{ background: '#EFF6FF', border: '1px solid #BFDBFE', padding: '8px 12px', borderRadius: '8px', fontSize: '0.8rem', display: 'flex', justifyContent: 'space-between' }}>
+                <strong style={{ color: '#1E40AF' }}>Domain Expert 1</strong>
+                <span style={{ color: '#64748B' }}>Technical Feasibility</span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', background: '#F8FAFC', border: '1px solid #E2E8F0', padding: '8px 10px', borderRadius: '10px', fontSize: '0.8rem' }}>
-                <span style={{ width: '24px', height: '24px', borderRadius: '50%', background: '#138808', color: '#FFFFFF', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.7rem', fontWeight: 800 }}>02</span>
-                <div><strong style={{ color: '#166534', display: 'block' }}>Business Expert</strong><span style={{ color: '#64748B' }}>Innovation & scaling</span></div>
+              <div style={{ background: '#ECFDF5', border: '1px solid #A7F3D0', padding: '8px 12px', borderRadius: '8px', fontSize: '0.8rem', display: 'flex', justifyContent: 'space-between' }}>
+                <strong style={{ color: '#166534' }}>Domain Expert 2</strong>
+                <span style={{ color: '#64748B' }}>Business & Scaling</span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', background: '#F8FAFC', border: '1px solid #E2E8F0', padding: '8px 10px', borderRadius: '10px', fontSize: '0.8rem' }}>
-                <span style={{ width: '24px', height: '24px', borderRadius: '50%', background: '#7C3AED', color: '#FFFFFF', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.7rem', fontWeight: 800 }}>03</span>
-                <div><strong style={{ color: '#6B21A8', display: 'block' }}>Social Impact Expert</strong><span style={{ color: '#64748B' }}>Policy & community value</span></div>
+              <div style={{ background: '#F3E8FF', border: '1px solid #DDD6FE', padding: '8px 12px', borderRadius: '8px', fontSize: '0.8rem', display: 'flex', justifyContent: 'space-between' }}>
+                <strong style={{ color: '#6B21A8' }}>Domain Expert 3</strong>
+                <span style={{ color: '#64748B' }}>Social & Policy Impact</span>
               </div>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#059669', fontSize: '0.72rem', fontWeight: 700, marginTop: '1rem' }}>
-              <CheckCircle2 size={14} /> Independent allocation with conflict screening
             </div>
           </div>
         </div>
@@ -329,7 +311,7 @@ const Landing = ({ currentUser, onRoleChange }) => {
       <footer className="govt-footer">
         <div className="footer-content">
           <div>
-            <h4 style={{ color: '#FFFFFF', marginBottom: '0.75rem' }}>Samarth Innovation Procurement Portal</h4>
+            <h4 style={{ color: '#FFFFFF', marginBottom: '0.75rem' }}>Maharashtra Innovation Procurement Portal</h4>
             <p style={{ fontSize: '0.825rem', lineHeight: 1.5, color: '#94A3B8' }}>
               An initiative of the Government of Maharashtra to fast-track innovation adoption through outcome-based, transparent public procurement.
             </p>

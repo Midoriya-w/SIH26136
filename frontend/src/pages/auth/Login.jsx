@@ -19,7 +19,6 @@ const Login = ({ currentUser, onRoleChange }) => {
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-    sessionStorage.setItem('mipp-demo-auth', 'true');
     onRoleChange(selectedRole);
     if (selectedRole === 'startup') navigate('/startup/dashboard');
     if (selectedRole === 'government') navigate('/government/dashboard');
@@ -34,10 +33,10 @@ const Login = ({ currentUser, onRoleChange }) => {
         <div style={{ maxWidth: '520px', width: '100%', background: '#FFFFFF', borderRadius: '24px', border: '1px solid #E2E8F0', padding: '2.5rem', boxShadow: '0 12px 32px rgba(11, 37, 69, 0.1)' }}>
           
           <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-            <img src="/logo-icon.png" alt="Samarth" style={{ height: '42px', marginBottom: '0.75rem' }} />
-            <h2 style={{ fontSize: '1.5rem', color: '#0B2545' }}>Samarth Portal</h2>
+            <img src="/logo-icon.png" alt="MIPP" style={{ height: '42px', marginBottom: '0.75rem' }} />
+            <h2 style={{ fontSize: '1.5rem', color: '#0B2545' }}>MIPP Portal</h2>
             <p style={{ fontSize: '0.85rem', color: '#64748B', marginTop: '4px' }}>
-              Please use your registered Samarth credentials to log in or apply.
+              Please use your registered MIPP credentials to log in or apply.
             </p>
           </div>
 

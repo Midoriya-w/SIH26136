@@ -62,7 +62,7 @@ const EvaluatorDashboard = ({ currentUser, onRoleChange }) => {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
           <div>
             <h2 style={{ fontSize: '1.25rem', color: '#0B2545' }}>Assigned Startup Applications</h2>
-            <p style={{ fontSize: '0.8rem', color: '#64748B' }}>Randomly allocated by the Samarth allocation engine</p>
+            <p style={{ fontSize: '0.8rem', color: '#64748B' }}>Randomly allocated by the MahaBridge allocation engine</p>
           </div>
           <Button variant="outline" size="sm" onClick={() => navigate('/evaluator/assigned')}>
             View All ({MOCK_APPLICATIONS.length})

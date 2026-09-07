@@ -8,7 +8,7 @@ const RoleSelectionModal = ({ open, onClose, onSelect }) => {
     <div style={{ position: 'fixed', inset: 0, background: 'rgba(2,6,23,0.45)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 600 }}>
       <div style={{ width: 760, maxWidth: '95%', background: '#fff', borderRadius: 12, padding: 20 }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
-          <h3 style={{ margin: 0, color: 'var(--primary-navy)' }}>Welcome to Samarth - Tell us who you are</h3>
+          <h3 style={{ margin: 0, color: 'var(--primary-navy)' }}>Welcome to MIPP — Tell us who you are</h3>
           <button onClick={onClose} style={{ border: 'none', background: 'transparent', fontSize: 18 }}>✕</button>
         </div>
 

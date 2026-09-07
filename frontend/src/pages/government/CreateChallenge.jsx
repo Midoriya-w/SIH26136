@@ -44,7 +44,7 @@ const CreateChallenge = ({ currentUser, onRoleChange }) => {
           
           <div style={{ borderBottom: '1px solid #E2E8F0', pb: '1rem', marginBottom: '1.5rem' }}>
             <span style={{ fontSize: '0.75rem', fontWeight: 800, color: '#138808', background: '#ECFDF5', padding: '2px 8px', borderRadius: '4px' }}>
-              Samarth Challenge Wizard
+              MIPP Challenge Wizard
             </span>
             <h1 style={{ fontSize: '1.5rem', color: '#0B2545', marginTop: '4px' }}>Post a New Challenge</h1>
             <p style={{ fontSize: '0.85rem', color: '#64748B' }}>
