@@ -26,17 +26,24 @@ const Login = ({ currentUser, onRoleChange }) => {
   };
 
   return (
-    <div className="app-container">
+    <div className="app-container auth-page">
       <Navbar currentUser={currentUser} onRoleChange={onRoleChange} />
 
       <main className="main-content" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: 'calc(100vh - 120px)', padding: '2rem 1.5rem' }}>
         <div style={{ maxWidth: '520px', width: '100%', background: '#FFFFFF', borderRadius: '24px', border: '1px solid #E2E8F0', padding: '2.5rem', boxShadow: '0 12px 32px rgba(11, 37, 69, 0.1)' }}>
           
           <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+ codex/redesign-samarth
+            <img src="/icon logo.png" alt="Samarth" style={{ height: '42px', marginBottom: '0.75rem', borderRadius: '12px' }} />
+            <h2 style={{ fontSize: '1.5rem', color: '#0B2545' }}>Samarth Portal</h2>
+            <p style={{ fontSize: '0.85rem', color: '#64748B', marginTop: '4px' }}>
+              Use your registered Samarth credentials to continue.
+
             <img src="/logo-icon.png" alt="MIPP" style={{ height: '42px', marginBottom: '0.75rem' }} />
             <h2 style={{ fontSize: '1.5rem', color: '#0B2545' }}>MIPP Portal</h2>
             <p style={{ fontSize: '0.85rem', color: '#64748B', marginTop: '4px' }}>
               Please use your registered MIPP credentials to log in or apply.
+ main
             </p>
           </div>
 
