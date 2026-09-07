@@ -2,25 +2,23 @@
 
 :root {
   /* Maharashtra Government Color System */
-  --primary-navy: #0B2545;
-  --primary-blue: #0056B3;
-  --accent-saffron: #FF9933;
-  --accent-orange: #E65100;
-  --accent-green: #138808;
-  --accent-emerald: #059669;
-  --accent-purple: #7C3AED;
+  /* Updated: Deep Navy + Warm Gold brand palette */
+  --primary-navy: #1B3A6B; /* deep navy for headings/primary text */
+  --accent-gold: #F5C242; /* dominant accent for CTAs/highlights */
+  --urgent-red: #FF4D3A; /* used sparingly for urgent notices */
+  --muted-navy: #274C7B; /* supporting tone */
   
-  --bg-gradient-header: linear-gradient(135deg, #0B2545 0%, #134074 100%);
-  --bg-gradient-hero: linear-gradient(180deg, #F8FAFC 0%, #EEF2F6 100%);
-  --bg-subtle-blue: #F0F5FF;
-  --bg-subtle-saffron: #FFF8F0;
+  --bg-gradient-header: linear-gradient(135deg, #FFFFFF 0%, #FFFFFF 100%);
+  --bg-gradient-hero: linear-gradient(180deg, #FFFFFF 0%, #FBFBFD 100%);
+  --bg-subtle: #FFFFFF;
+  --bg-subtle-ghost: #FBFBFD;
   
-  --text-main: #1E293B;
-  --text-muted: #64748B;
-  --text-light: #94A3B8;
+  --text-main: var(--primary-navy);
+  --text-muted: #617089;
+  --text-light: #9AA6B3;
   
-  --border-light: #E2E8F0;
-  --border-hover: #CBD5E1;
+  --border-light: #E6E9EE;
+  --border-hover: #D3D9E6;
   --shadow-sm: 0 2px 4px rgba(11, 37, 69, 0.04);
   --shadow-md: 0 4px 12px rgba(11, 37, 69, 0.08);
   --shadow-lg: 0 12px 28px rgba(11, 37, 69, 0.12);
@@ -113,8 +111,8 @@ body.font-small {
 
 /* Top Govt Bar */
 .govt-top-bar {
-  background-color: #06182E;
-  color: #CBD5E1;
+  background-color: var(--primary-navy);
+  color: #FFFFFF;
   font-size: 0.8rem;
   padding: 6px 1.5rem;
   display: flex;
@@ -174,9 +172,10 @@ body.font-small {
 }
 
 .navbar-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0.75rem 1.5rem;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0.75rem 1.4rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -189,7 +188,7 @@ body.font-small {
 }
 
 .brand-emblem {
-  height: 52px;
+  height: 48px;
   width: auto;
 }
 
@@ -220,22 +219,60 @@ body.font-small {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  justify-content: center;
+  gap: 0.3rem;
   list-style: none;
+  padding: 0.35rem 0.45rem;
+  background: linear-gradient(180deg, #F8FAFC 0%, #F1F5F9 100%);
+  border: 1px solid var(--border-light);
+  border-radius: 999px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.65);
+  flex-wrap: nowrap;
+}
+
+.nav-links li {
+  transition: transform 0.2s ease;
+}
+
+.nav-links li:hover {
+  transform: translateY(-1px);
 }
 
 .nav-item-link {
+  position: relative;
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: var(--text-main);
-  padding: 0.5rem 0.75rem;
-  border-radius: var(--radius-sm);
+  padding: 0.6rem 0.8rem;
+  border-radius: 999px;
   transition: all 0.2s ease;
+  letter-spacing: 0.01em;
 }
 
-.nav-item-link:hover, .nav-item-link.active {
-  color: var(--primary-blue);
-  background-color: var(--bg-subtle-blue);
+.nav-item-link::after {
+  content: '';
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 8px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--primary-navy), #4F8EF7);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.18s ease;
+}
+
+.nav-item-link:hover,
+.nav-item-link.active {
+  color: var(--primary-navy);
+  background: rgba(27, 58, 107, 0.05);
+  box-shadow: inset 0 0 0 1px rgba(27, 58, 107, 0.04);
+}
+
+.nav-item-link:hover::after,
+.nav-item-link.active::after {
+  transform: scaleX(1);
 }
 
 /* User Role Pill */
@@ -378,25 +415,52 @@ body.font-small {
   white-space: nowrap;
 }
 
-.btn-primary {
-  background-color: var(--primary-blue);
-  color: #FFFFFF;
+.btn-apply {
+  background-color: var(--accent-gold);
+  color: #10233A;
+  border-color: rgba(0,0,0,0.04);
 }
 
-.btn-primary:hover {
-  background-color: #004494;
-  box-shadow: 0 4px 12px rgba(0, 86, 179, 0.25);
+.btn-apply:hover {
+  filter: brightness(0.98);
+  box-shadow: 0 8px 24px rgba(245,194,66,0.18);
 }
 
-.btn-navy {
-  background-color: var(--primary-navy);
-  color: #FFFFFF;
+.btn-outline {
+  background: transparent;
+  color: var(--primary-navy);
+  border: 1px solid var(--primary-navy);
 }
 
-.btn-navy:hover {
-  background-color: #06182E;
-  box-shadow: 0 4px 12px rgba(11, 37, 69, 0.25);
+.btn-outline:hover {
+  background: rgba(27,58,107,0.04);
 }
+
+/* Announcement ribbon under nav */
+.announcement-ribbon {
+  background: linear-gradient(90deg, rgba(255,255,255,0.6), rgba(255,255,255,0.8));
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+  padding: 6px 0;
+}
+.announcement-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-weight:600;
+  color:var(--text-main);
+}
+.announcement-tag {
+  background: var(--urgent-red);
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size:0.8rem;
+}
+.announcement-text { font-size:0.95rem; }
 
 .btn-saffron {
   background-color: var(--accent-orange);

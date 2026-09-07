@@ -33,10 +33,10 @@ const Login = ({ currentUser, onRoleChange }) => {
         <div style={{ maxWidth: '520px', width: '100%', background: '#FFFFFF', borderRadius: '24px', border: '1px solid #E2E8F0', padding: '2.5rem', boxShadow: '0 12px 32px rgba(11, 37, 69, 0.1)' }}>
           
           <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-            <img src="/logo.svg" alt="MahaBridge" style={{ height: '42px', marginBottom: '0.75rem' }} />
-            <h2 style={{ fontSize: '1.5rem', color: '#0B2545' }}>Single Sign-On Portal</h2>
+            <img src="/logo-icon.png" alt="MIPP" style={{ height: '42px', marginBottom: '0.75rem' }} />
+            <h2 style={{ fontSize: '1.5rem', color: '#0B2545' }}>MIPP Portal</h2>
             <p style={{ fontSize: '0.85rem', color: '#64748B', marginTop: '4px' }}>
-              Select your authorization role to enter MahaBridge
+              Please use your registered MIPP credentials to log in or apply.
             </p>
           </div>
 
@@ -115,7 +115,7 @@ const Login = ({ currentUser, onRoleChange }) => {
           <form onSubmit={handleLoginSubmit}>
             <div style={{ marginBottom: '1.25rem' }}>
               <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: '#0B2545', marginBottom: '0.5rem' }}>
-                Authorized Email / Credentials
+                Department / Startup Credentials
               </label>
               <input
                 type="email"
@@ -128,7 +128,7 @@ const Login = ({ currentUser, onRoleChange }) => {
 
             <div style={{ marginBottom: '1.75rem' }}>
               <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: '#0B2545', marginBottom: '0.5rem' }}>
-                Security Password
+                Password
               </label>
               <input
                 type="password"
@@ -140,13 +140,16 @@ const Login = ({ currentUser, onRoleChange }) => {
             </div>
 
             <Button variant="navy" type="submit" icon={ArrowRight} style={{ width: '100%', padding: '0.875rem' }}>
-              Authenticate & Launch Portal
+              Sign In
             </Button>
           </form>
 
-          <div style={{ marginTop: '1.5rem', background: '#F8FAFC', padding: '0.75rem', borderRadius: '8px', border: '1px solid #E2E8F0', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.75rem', color: '#64748B' }}>
-            <ShieldCheck size={16} color="#138808" />
-            <span>Encrypted with State NIC Data Security Standards.</span>
+          <div style={{ marginTop: '1.5rem', background: '#F8FAFC', padding: '0.75rem', borderRadius: '8px', border: '1px solid #E2E8F0', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.75rem', color: '#64748B', justifyContent: 'space-between' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <ShieldCheck size={16} color="#138808" />
+              <span>Government SSO</span>
+            </div>
+            <a href="#" style={{ color: '#0056B3', fontWeight: 700 }}>Forgot Password?</a>
           </div>
 
         </div>

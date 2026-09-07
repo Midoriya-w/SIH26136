@@ -1,6 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/common/Navbar';
+import RoleSelectionModal from '../components/common/RoleSelectionModal';
+import LoginModal from '../components/common/LoginModal';
 import {
   DOMAIN_CATEGORIES,
   PROCESS_FLOW_STEPS,
@@ -49,42 +51,32 @@ const Landing = ({ currentUser, onRoleChange }) => {
     if (roleKey === 'evaluator') navigate('/evaluator/dashboard');
   };
 
+  const [roleModalOpen, setRoleModalOpen] = React.useState(false);
+  const [loginModalOpen, setLoginModalOpen] = React.useState(false);
+
   return (
     <div className="app-container">
       <Navbar currentUser={currentUser} onRoleChange={onRoleChange} />
 
       <main className="main-content" style={{ maxWidth: '1400px', margin: '0 auto', padding: '2rem 1.5rem' }}>
-        
-        {/* Poster Hero Banner Matching Image */}
-        <div className="poster-hero">
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1.5rem', marginBottom: '2rem' }}>
-            <div>
-              <span style={{ background: '#FF9933', color: '#0B2545', fontWeight: 800, fontSize: '0.75rem', padding: '4px 12px', borderRadius: '20px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-                Maharashtra State Innovation Society Portal
-              </span>
-              <h1 style={{ fontSize: '3rem', color: '#FFFFFF', margin: '0.75rem 0 0.5rem 0', fontWeight: 900, lineHeight: 1.1 }}>
-                Maha<span style={{ color: '#FF9933' }}>Bridge</span>
-              </h1>
-              <p style={{ fontSize: '1.25rem', color: '#93C5FD', fontWeight: 600 }}>
-                Connect Ideas • Evaluate • Pilot • Procure • Scale
-              </p>
-              <p style={{ fontSize: '0.95rem', color: '#CBD5E1', maxWidth: '650px', marginTop: '0.5rem' }}>
-                Government Challenges. Startup Solutions. <strong style={{ color: '#FFFFFF' }}>Real Impact.</strong> Empowering startups with direct state procurement opportunities and fair multi-expert evaluation.
-              </p>
-            </div>
 
-            <div style={{ background: 'rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(10px)', border: '1px solid rgba(255, 255, 255, 0.2)', padding: '1.25rem', borderRadius: '16px', maxWidth: '380px' }}>
-              <div style={{ fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', color: '#FF9933', letterSpacing: '0.5px', marginBottom: '6px' }}>
-                State Innovation Mission
-              </div>
-              <div style={{ fontSize: '0.9rem', color: '#FFFFFF', fontWeight: 600, lineHeight: 1.4 }}>
-                Department of Skills, Employment, Entrepreneurship & Innovation
-              </div>
-              <div style={{ fontSize: '0.75rem', color: '#94A3B8', marginTop: '8px' }}>
-                Innovative Maharashtra • Stronger Tomorrow
-              </div>
+        {/* New Hero - left text, right illustration */}
+        <section style={{ display: 'flex', gap: '1.5rem', alignItems: 'center', marginBottom: '2.5rem', flexWrap: 'wrap' }}>
+          <div style={{ flex: '1 1 420px', minWidth: 320 }}>
+            <h1 style={{ fontSize: '2.6rem', fontWeight: 800, color: 'var(--primary-navy)', lineHeight: 1.05 }}>Maharashtra Innovation Procurement Portal</h1>
+            <p style={{ fontSize: '1.1rem', color: 'var(--text-muted)', marginTop: 12, maxWidth: 640 }}>Where government challenges meet startup solutions. Post a problem, run a low-risk pilot, and scale what works — transparently, and on merit.</p>
+
+            <div style={{ display: 'flex', gap: 12, marginTop: 18, alignItems: 'center', flexWrap: 'wrap' }}>
+              <button className="btn btn-apply" onClick={() => setRoleModalOpen(true)}>Post a Challenge</button>
+              <button className="btn btn-outline" onClick={() => navigate('/startup/challenges')}>Browse Challenges</button>
+              <a href="#" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, color: 'var(--primary-navy)', fontWeight: 700 }}>▶ Watch: How MIPP Works (90 sec)</a>
             </div>
           </div>
+
+          <div style={{ flex: '0 0 420px', minWidth: 280, display: 'flex', justifyContent: 'center' }}>
+            <img src="/hero-illustration.svg" alt="Hero illustration" style={{ width: '100%', maxWidth: 520 }} />
+          </div>
+        </section>
 
           {/* 3 Portal Role Entry Cards */}
           <div className="role-portal-grid">
@@ -169,10 +161,50 @@ const Landing = ({ currentUser, onRoleChange }) => {
               </Button>
             </div>
           </div>
+
+        {/* Live stats strip */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '1rem', marginBottom: '2.5rem' }}>
+          {[
+            ['Active Challenges', '42'],
+            ['Startups Onboarded', '1,280'],
+            ['Pilots Completed', '96'],
+            ['Value of Pilots Contracted', '₹18.4 Cr']
+          ].map(([label, value]) => (
+            <div key={label} style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: '14px', padding: '1rem 1.2rem', boxShadow: '0 4px 12px rgba(0,0,0,0.03)' }}>
+              <div style={{ fontSize: '0.76rem', color: '#64748B', textTransform: 'uppercase', letterSpacing: '0.06em' }}>{label}</div>
+              <div style={{ fontSize: '1.8rem', fontWeight: 800, color: '#0B2545', lineHeight: 1.2 }}>{value}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* How It Works */}
+        <div className="process-flow-container">
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', marginBottom: '1rem', borderBottom: '1px solid #E2E8F0', paddingBottom: '0.75rem' }}>
+            <div>
+              <span style={{ fontSize: '0.75rem', fontWeight: 800, color: '#0056B3', background: '#EFF6FF', padding: '2px 8px', borderRadius: '4px' }}>
+                How It Works
+              </span>
+              <h2 style={{ fontSize: '1.4rem', color: '#0B2545', marginTop: '4px' }}>Three steps from challenge to scale-up</h2>
+            </div>
+          </div>
+
+          <div className="process-steps-grid">
+            {[
+              ['1', 'Post a Challenge', 'Departments define a real problem, set measurable outcomes, and a budget ceiling — no lengthy tender documents, just a clear problem statement.'],
+              ['2', 'Pilot, Not a Full Rollout', 'Shortlisted startups run a time-bound, low-risk pilot with milestone-based funding — proving value before any large commitment.'],
+              ['3', 'Scale What Works', 'Validated pilots get fast-tracked for scale-up across departments, with GeM catalogue integration for easy replication.']
+            ].map(([step, title, desc]) => (
+              <div key={title} className="step-card">
+                <div className="step-number">{step}</div>
+                <div className="step-title">{title}</div>
+                <div className="step-desc">{desc}</div>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* End-to-End Process Flow Banner */}
-        <div className="process-flow-container">
+        <div className="process-flow-container" style={{ marginTop: '2.5rem' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', marginBottom: '1rem', borderBottom: '1px solid #E2E8F0', paddingBottom: '0.75rem' }}>
             <div>
               <span style={{ fontSize: '0.75rem', fontWeight: 800, color: '#0056B3', background: '#EFF6FF', padding: '2px 8px', borderRadius: '4px' }}>
@@ -279,33 +311,35 @@ const Landing = ({ currentUser, onRoleChange }) => {
       <footer className="govt-footer">
         <div className="footer-content">
           <div>
-            <h4 style={{ color: '#FFFFFF', marginBottom: '0.75rem' }}>MahaBridge Portal</h4>
+            <h4 style={{ color: '#FFFFFF', marginBottom: '0.75rem' }}>Maharashtra Innovation Procurement Portal</h4>
             <p style={{ fontSize: '0.825rem', lineHeight: 1.5, color: '#94A3B8' }}>
-              Official Startup & Innovation Procurement Engine of the Government of Maharashtra. Managed by Maharashtra State Innovation Society (MSINS).
+              An initiative of the Government of Maharashtra to fast-track innovation adoption through outcome-based, transparent public procurement.
             </p>
           </div>
           <div>
-            <h4 style={{ color: '#FFFFFF', marginBottom: '0.75rem' }}>Important Portals</h4>
+            <h4 style={{ color: '#FFFFFF', marginBottom: '0.75rem' }}>Quick Links</h4>
             <ul style={{ listStyle: 'none', fontSize: '0.825rem', display: 'flex', flexDirection: 'column', gap: '6px' }}>
-              <li><a href="https://maharashtra.gov.in" target="_blank" rel="noreferrer" style={{ color: '#CBD5E1' }}>Govt of Maharashtra Main Portal</a></li>
-              <li><a href="https://msins.in" target="_blank" rel="noreferrer" style={{ color: '#CBD5E1' }}>MSINS Official Website</a></li>
-              <li><a href="https://aaplesarkar.maharashtra.gov.in" target="_blank" rel="noreferrer" style={{ color: '#CBD5E1' }}>Aaple Sarkar Services</a></li>
+              <li><a href="https://maharashtra.gov.in" target="_blank" rel="noreferrer" style={{ color: '#CBD5E1' }}>Terms of Use</a></li>
+              <li><a href="https://msins.in" target="_blank" rel="noreferrer" style={{ color: '#CBD5E1' }}>Privacy Policy</a></li>
+              <li><a href="https://aaplesarkar.maharashtra.gov.in" target="_blank" rel="noreferrer" style={{ color: '#CBD5E1' }}>Contact Us</a></li>
             </ul>
           </div>
           <div>
-            <h4 style={{ color: '#FFFFFF', marginBottom: '0.75rem' }}>Contact Office</h4>
+            <h4 style={{ color: '#FFFFFF', marginBottom: '0.75rem' }}>Helpline</h4>
             <p style={{ fontSize: '0.825rem', lineHeight: 1.5, color: '#94A3B8' }}>
-              Maharashtra State Innovation Society<br />
-              13th Floor, New Administrative Building, Opp. Mantralaya, Mumbai - 400032
+              Helpline: 1800-XXX-XXXX<br />
+              Working Hours: 10:00 AM – 6:00 PM, Mon–Sat
             </p>
           </div>
         </div>
 
         <div className="footer-bottom">
+          <div>Built on the principles of transparency, fair evaluation, and startup-friendly procurement — aligned with Startup India and GeM standards.</div>
           <div>© 2026 Government of Maharashtra. All Rights Reserved.</div>
-          <div>Designed for SIH 2026 Innovation Challenge</div>
         </div>
       </footer>
+      <RoleSelectionModal open={roleModalOpen} onClose={() => setRoleModalOpen(false)} onSelect={(r) => { setRoleModalOpen(false); handleRoleLaunch(r === 'incubator' ? 'government' : 'startup'); }} />
+      <LoginModal open={loginModalOpen} onClose={() => setLoginModalOpen(false)} />
     </div>
   );
 };

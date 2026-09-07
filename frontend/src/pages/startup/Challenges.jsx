@@ -28,10 +28,10 @@ const StartupChallenges = ({ currentUser, onRoleChange }) => {
     <StartupLayout currentUser={currentUser} onRoleChange={onRoleChange}>
       <div style={{ marginBottom: '2rem' }}>
         <h1 style={{ fontSize: '1.6rem', color: '#0B2545', marginBottom: '0.25rem' }}>
-          Government Department Challenges
+          Browse Challenges
         </h1>
         <p style={{ fontSize: '0.85rem', color: '#64748B' }}>
-          Browse open problem statements issued by Maharashtra state departments and apply for pilot funding.
+          Find real government problems you can solve. Filter by sector, department, or funding needed.
         </p>
       </div>
 
