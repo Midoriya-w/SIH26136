@@ -1,0 +1,98 @@
+version: '3.8'
+
+services:
+  # 1. Team B PostgreSQL Database (Financial & Legal Integrity)
+  postgres:
+    image: postgres:16-alpine
+    container_name: mahabridge_postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespassword
+      POSTGRES_DB: post_award_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  # 2. Redis Event Broker & Cache
+  redis:
+    image: redis:7-alpine
+    container_name: mahabridge_redis
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+
+  # 3. MinIO (S3-Compatible Object Storage for PDFs and Deliverable Proofs)
+  minio:
+    image: minio/minio:latest
+    container_name: mahabridge_minio
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadminpassword
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - miniodata:/data
+    restart: unless-stopped
+
+  # 4. Team B FastAPI Backend Service
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mahabridge_backend
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgrespassword@postgres:5432/post_award_db
+      - ENVIRONMENT=production
+      - JWT_SECRET_KEY=mahabridge-super-secure-secret-key-2026-sih
+      - AES_SECRET_KEY=k7W_q3x1P9t8V6z4B2m0N1c3X5l7J9r2D4f6H8j0L2M=
+      - REDIS_URL=redis://redis:6379/0
+      - GEM_MODE=batch_export
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_started
+      minio:
+        condition: service_started
+    volumes:
+      - ./storage:/app/storage
+    restart: unless-stopped
+
+  # 5. Prometheus Observability (/metrics scraper)
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: mahabridge_prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+  # 6. Grafana Dashboards
+  grafana:
+    image: grafana/grafana:latest
+    container_name: mahabridge_grafana
+    ports:
+      - "3001:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    depends_on:
+      - prometheus
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+  miniodata:

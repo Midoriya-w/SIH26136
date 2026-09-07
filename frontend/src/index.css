@@ -231,10 +231,17 @@ body.font-small {
   gap: 0.3rem;
   list-style: none;
   padding: 0.35rem 0.45rem;
+codex/redesign-samarth
   background: rgba(15, 23, 42, 0.7);
   border: 1px solid rgba(148, 163, 184, 0.18);
   border-radius: 999px;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+  background: linear-gradient(180deg, #F8FAFC 0%, #F1F5F9 100%);
+  border: 1px solid var(--border-light);
+  border-radius: 999px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.65);
+ main
   flex-wrap: nowrap;
 }
 
@@ -250,7 +257,12 @@ body.font-small {
   position: relative;
   font-weight: 600;
   font-size: 0.9rem;
+
+  codex/redesign-samarth
   color: #E2E8F0;
+
+  color: var(--text-main);
+  main
   padding: 0.6rem 0.8rem;
   border-radius: 999px;
   transition: all 0.2s ease;
@@ -265,7 +277,12 @@ body.font-small {
   bottom: 8px;
   height: 2px;
   border-radius: 999px;
+
+  codex/redesign-samarth
   background: linear-gradient(90deg, #F4C96A, #60A5FA);
+
+  background: linear-gradient(90deg, var(--primary-navy), #4F8EF7);
+  main
   transform: scaleX(0);
   transform-origin: center;
   transition: transform 0.18s ease;
@@ -273,9 +290,16 @@ body.font-small {
 
 .nav-item-link:hover,
 .nav-item-link.active {
+
+  codex/redesign-samarth
   color: #F8FAFC;
   background: rgba(148, 163, 184, 0.12);
   box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.08);
+ 
+  color: var(--primary-navy);
+  background: rgba(27, 58, 107, 0.05);
+  box-shadow: inset 0 0 0 1px rgba(27, 58, 107, 0.04);
+ main
 }
 
 .nav-item-link:hover::after,
