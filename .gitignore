@@ -1,4 +1,23 @@
 # Python
+ teamb2
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Local configuration and databases
+.env
+*.db
+
+# Generated backend storage
+Backend/storage/pdfs/*
+Backend/storage/proofs/*
+
+# Frontend dependencies and builds
+Frontend/node_modules/
+Frontend/dist/
+
 backend/venv/
 backend/__pycache__/
 backend/**/__pycache__/
@@ -25,3 +44,4 @@ frontend/dist/
 # OS
 .DS_Store
 Thumbs.db
+ main
