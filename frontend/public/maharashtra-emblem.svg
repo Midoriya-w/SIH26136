@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" fill="none">
+  <!-- Lion Capital Seal Silhouette representing Govt emblem -->
+  <path d="M50 5 L65 25 L85 25 L75 45 L90 60 L70 75 L75 100 L50 115 L25 100 L30 75 L10 60 L25 45 L15 25 L35 25 Z" fill="#0B2545" opacity="0.08"/>
+  <circle cx="50" cy="40" r="30" stroke="#0B2545" stroke-width="3" fill="none"/>
+  <!-- Ashoka Chakra Symbol in Center -->
+  <circle cx="50" cy="40" r="14" stroke="#0056B3" stroke-width="2.5" fill="#FFFFFF"/>
+  <circle cx="50" cy="40" r="3" fill="#0056B3"/>
+  <!-- Spokes -->
+  <path d="M50 26 L50 54 M36 40 L64 40 M40 30 L60 50 M40 50 L60 30" stroke="#0056B3" stroke-width="1.5"/>
+  <!-- Base Crest Banner -->
+  <path d="M20 82 Q50 92 80 82 L75 96 Q50 104 25 96 Z" fill="#B8860B"/>
+  <text x="50" y="93" font-family="sans-serif" font-size="7" font-weight="bold" fill="#FFFFFF" text-anchor="middle">सत्यमेव जयते</text>
+</svg>

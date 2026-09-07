@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 70" fill="none">
+  <!-- Dynamic Bridge Arch Graphic -->
+  <path d="M12 48 C 30 20, 60 20, 78 48" stroke="#0056B3" stroke-width="6" stroke-linecap="round"/>
+  <path d="M22 52 C 38 28, 52 28, 68 52" stroke="#FF9933" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="45" cy="22" r="6" fill="#138808"/>
+  <circle cx="22" cy="50" r="4" fill="#0056B3"/>
+  <circle cx="68" cy="50" r="4" fill="#0056B3"/>
+
+  <!-- Text: Maha -->
+  <text x="88" y="48" font-family="'Inter', 'Segoe UI', sans-serif" font-weight="900" font-size="36" fill="#0B2545" letter-spacing="-1">Maha</text>
+  <!-- Text: Bridge -->
+  <text x="180" y="48" font-family="'Inter', 'Segoe UI', sans-serif" font-weight="900" font-size="36" fill="#0066FF" letter-spacing="-1">Bridge</text>
+</svg>
