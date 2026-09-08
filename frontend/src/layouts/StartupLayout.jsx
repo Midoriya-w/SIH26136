@@ -4,7 +4,7 @@ import Sidebar from '../components/common/Sidebar';
 
 const StartupLayout = ({ children, currentUser, onRoleChange }) => {
   return (
-    <div className="app-container">
+    <div className="app-container portal-app portal-startup">
       <Navbar currentUser={currentUser} onRoleChange={onRoleChange} />
       <div className="dashboard-layout">
         <Sidebar role="startup" />

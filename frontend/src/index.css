@@ -996,6 +996,106 @@ h1,h2,h3,h4,h5,h6 { font-family:'Plus Jakarta Sans',system-ui,sans-serif; color:
 .landing-page .footer-mark { filter:none; }
 .landing-page .footer-bottom { color:#64738a; border-color:#d8e2ee; }
 
+/* Frosted-glass treatment for the "Why Samarth" journey cards.  The warm/cool
+   ambient light keeps the glass legible on the otherwise quiet landing page. */
+.landing-page .why-section {
+  position: relative;
+  isolation: isolate;
+}
+.landing-page .why-section::before,
+.landing-page .why-section::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: 19rem;
+  height: 19rem;
+  border-radius: 50%;
+  filter: blur(12px);
+  pointer-events: none;
+}
+.landing-page .why-section::before {
+  top: 2.1rem;
+  left: -7rem;
+  background: radial-gradient(circle, rgb(91 155 255 / 22%), rgb(91 155 255 / 0%) 70%);
+}
+.landing-page .why-section::after {
+  right: -5rem;
+  bottom: 1rem;
+  background: radial-gradient(circle, rgb(255 131 101 / 20%), rgb(255 131 101 / 0%) 70%);
+}
+.landing-page .why-section .three-card-grid {
+  gap: 1.35rem;
+}
+.landing-page .why-section .info-card,
+.landing-page .why-section .info-card.problem,
+.landing-page .why-section .info-card.innovation,
+.landing-page .why-section .info-card.prototype {
+  position: relative;
+  overflow: hidden;
+  min-height: 292px;
+  padding: 1.7rem;
+  border: 1px solid rgb(255 255 255 / 74%);
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgb(255 255 255 / 79%), rgb(246 249 255 / 52%));
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 92%),
+    inset 0 -1px 0 rgb(155 174 207 / 15%),
+    0 18px 38px rgb(25 57 108 / 11%);
+  backdrop-filter: blur(18px) saturate(145%);
+  -webkit-backdrop-filter: blur(18px) saturate(145%);
+}
+.landing-page .why-section .info-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(125deg, rgb(255 255 255 / 90%), rgb(255 255 255 / 12%) 44%, rgb(107 155 233 / 26%));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+.landing-page .why-section .info-card::after {
+  content: '';
+  position: absolute;
+  top: -6.75rem;
+  right: -4.5rem;
+  width: 12rem;
+  height: 12rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgb(255 255 255 / 76%) 0%, rgb(255 255 255 / 0%) 68%);
+  pointer-events: none;
+}
+.landing-page .why-section .info-card > span {
+  display: inline-grid;
+  place-items: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  color: #f04d32;
+  background: rgb(255 255 255 / 58%);
+  border: 1px solid rgb(255 255 255 / 88%);
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgb(30 68 126 / 10%);
+}
+.landing-page .why-section .info-card h3 {
+  margin-top: 1.25rem;
+  font-size: 1.16rem;
+}
+.landing-page .why-section .info-card li::before { color: #ed634c; }
+.landing-page .why-section .info-card:hover {
+  transform: translateY(-7px) scale(1.008);
+  border-color: rgb(255 255 255 / 95%);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 98%),
+    0 24px 48px rgb(25 57 108 / 17%);
+}
+.landing-page .why-section .info-card.innovation { background: linear-gradient(135deg, rgb(248 255 252 / 84%), rgb(229 247 241 / 53%)); }
+.landing-page .why-section .info-card.prototype { background: linear-gradient(135deg, rgb(255 251 247 / 84%), rgb(255 237 229 / 55%)); }
+@media (max-width: 640px) {
+  .landing-page .why-section .info-card { min-height: auto; border-radius: 20px; }
+}
+
 /* Keep the primary destinations anchored beside the brand instead of centered in the header. */
 .egovt-header .text-navigation ul { justify-content:flex-start; }
 
@@ -1074,4 +1174,801 @@ a.btn { transition:transform .18s cubic-bezier(.2,.8,.2,1), box-shadow .18s ease
   .btn,
   button,
   .egovt-header .text-navigation a { transition:none!important; }
+}
+
+/* Carry the landing page's glass depth through every supporting content block. */
+.landing-page .role-portal-card,
+.landing-page .workflow-diagram,
+.landing-page .redesigned-domains .domain-item,
+.landing-page .assurance-panel,
+.landing-page .live-prototype {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.landing-page .role-portal-card {
+  border-color: rgb(218 227 241 / 88%);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 96%), 0 16px 32px rgb(25 57 108 / 10%);
+}
+.landing-page .role-portal-card::before,
+.landing-page .workflow-diagram::before,
+.landing-page .redesigned-domains .domain-item::before,
+.landing-page .assurance-panel::before,
+.landing-page .live-prototype::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgb(255 255 255 / 78%), rgb(255 255 255 / 0%) 48%);
+}
+.landing-page .role-portal-card > *,
+.landing-page .workflow-diagram > *,
+.landing-page .redesigned-domains .domain-item > *,
+.landing-page .assurance-panel > *,
+.landing-page .live-prototype > * { position: relative; z-index: 1; }
+.landing-page .role-portal-card::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  width: 9rem;
+  height: 9rem;
+  right: -4rem;
+  top: -4rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgb(255 106 76 / 13%), transparent 68%);
+}
+.landing-page .role-portal-card:hover {
+  transform: translateY(-7px);
+  box-shadow: inset 0 1px 0 #fff, 0 24px 42px rgb(25 57 108 / 16%);
+}
+.landing-page .workflow-diagram {
+  padding: .7rem .7rem 2rem;
+  border-radius: 20px;
+  box-shadow: inset 0 1px 0 #fff, 0 18px 34px rgb(25 57 108 / 8%);
+}
+.landing-page .flow-node {
+  border-radius: 15px;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 92%), 0 7px 14px rgb(25 57 108 / 5%);
+}
+.landing-page .redesigned-domains .domain-item {
+  border-radius: 14px;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 94%), 0 7px 15px rgb(25 57 108 / 5%);
+}
+.landing-page .redesigned-domains .domain-item:hover {
+  box-shadow: inset 0 1px 0 #fff, 0 15px 25px rgb(25 57 108 / 12%);
+}
+.landing-page .assurance-panel {
+  border-radius: 22px;
+  box-shadow: inset 0 1px 0 #fff, 0 20px 40px rgb(25 57 108 / 11%);
+}
+.landing-page .criteria-grid div {
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 86%), 0 5px 10px rgb(25 57 108 / 4%);
+}
+.landing-page .live-prototype {
+  border-radius: 20px;
+  box-shadow: inset 0 1px 0 #fff, 0 16px 32px rgb(25 57 108 / 8%);
+}
+@media (max-width: 640px) {
+  .landing-page .workflow-diagram,
+  .landing-page .assurance-panel,
+  .landing-page .live-prototype { border-radius: 18px; }
+}
+
+/* Workspace cards use the same translucent, softly tinted language as the journey cards. */
+.landing-page .role-portal-card {
+  min-height: 330px;
+  border: 1px solid rgb(255 255 255 / 82%);
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgb(255 255 255 / 88%), rgb(244 248 255 / 58%));
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 95%),
+    inset 0 -1px 0 rgb(155 174 207 / 15%),
+    0 18px 38px rgb(25 57 108 / 11%);
+  backdrop-filter: blur(18px) saturate(145%);
+  -webkit-backdrop-filter: blur(18px) saturate(145%);
+}
+.landing-page .role-portal-card.government {
+  background: linear-gradient(135deg, rgb(248 255 252 / 88%), rgb(229 247 241 / 58%));
+}
+.landing-page .role-portal-card.evaluator {
+  background: linear-gradient(135deg, rgb(255 251 247 / 88%), rgb(255 237 229 / 61%));
+}
+.landing-page .role-portal-card::before {
+  inset: 0;
+  background: linear-gradient(125deg, rgb(255 255 255 / 90%), rgb(255 255 255 / 12%) 44%, rgb(107 155 233 / 22%));
+  border-radius: inherit;
+  opacity: .9;
+}
+.landing-page .role-portal-card::after {
+  width: 13rem;
+  height: 13rem;
+  right: -5rem;
+  top: -6rem;
+  background: radial-gradient(circle, rgb(122 167 237 / 15%), transparent 68%);
+}
+.landing-page .role-portal-card.government::after {
+  background: radial-gradient(circle, rgb(100 206 166 / 15%), transparent 68%);
+}
+.landing-page .role-portal-card.evaluator::after {
+  background: radial-gradient(circle, rgb(255 141 104 / 16%), transparent 68%);
+}
+.landing-page .role-portal-card .role-icon {
+  border-radius: 14px;
+  background: rgb(255 255 255 / 65%);
+  border: 1px solid rgb(255 255 255 / 86%);
+  box-shadow: 0 5px 14px rgb(30 68 126 / 8%);
+}
+.landing-page .role-portal-card:hover {
+  transform: translateY(-7px) scale(1.008);
+  border-color: rgb(255 255 255 / 98%);
+  box-shadow:
+    inset 0 1px 0 #fff,
+    0 24px 48px rgb(25 57 108 / 17%);
+}
+@media (max-width: 640px) {
+  .landing-page .role-portal-card { border-radius: 20px; }
+}
+
+/* Make both halves of the process flow feel like one elevated, glass timeline. */
+.landing-page .workflow-wrap {
+  background:
+    radial-gradient(circle at 12% 46%, rgb(105 163 255 / 10%), transparent 25rem),
+    radial-gradient(circle at 88% 52%, rgb(255 148 115 / 10%), transparent 24rem),
+    #f5f7fa;
+}
+.landing-page .workflow-diagram {
+  border-color: rgb(255 255 255 / 86%);
+  background: linear-gradient(135deg, rgb(255 255 255 / 76%), rgb(244 248 255 / 58%));
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 95%),
+    inset 0 -1px 0 rgb(155 174 207 / 13%),
+    0 20px 42px rgb(25 57 108 / 11%);
+  backdrop-filter: blur(18px) saturate(145%);
+  -webkit-backdrop-filter: blur(18px) saturate(145%);
+}
+.landing-page .flow-node {
+  overflow: hidden;
+  border-color: rgb(255 255 255 / 88%);
+  background: linear-gradient(135deg, rgb(255 255 255 / 88%), rgb(246 249 255 / 54%));
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 96%),
+    0 10px 20px rgb(25 57 108 / 8%);
+}
+.landing-page .flow-node:nth-child(2n) {
+  background: linear-gradient(135deg, rgb(248 255 252 / 90%), rgb(229 247 241 / 56%));
+}
+.landing-page .flow-node:nth-child(3n) {
+  background: linear-gradient(135deg, rgb(255 251 247 / 90%), rgb(255 237 229 / 59%));
+}
+.landing-page .flow-node:hover {
+  border-color: rgb(255 255 255 / 98%);
+  box-shadow: inset 0 1px 0 #fff, 0 18px 30px rgb(25 57 108 / 14%);
+}
+.landing-page .flow-number {
+  box-shadow: 0 5px 12px rgb(240 77 50 / 22%);
+}
+
+/* Priority sectors inherit the same quiet glass surface and ambient color cues. */
+.landing-page .redesigned-domains .domain-item {
+  min-height: 112px;
+  border-color: rgb(255 255 255 / 86%);
+  background: linear-gradient(135deg, rgb(255 255 255 / 88%), rgb(246 249 255 / 56%));
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 95%),
+    inset 0 -1px 0 rgb(155 174 207 / 12%),
+    0 10px 20px rgb(25 57 108 / 7%);
+  backdrop-filter: blur(14px) saturate(135%);
+  -webkit-backdrop-filter: blur(14px) saturate(135%);
+}
+.landing-page .redesigned-domains .domain-item:nth-child(3n + 2) {
+  background: linear-gradient(135deg, rgb(248 255 252 / 89%), rgb(229 247 241 / 57%));
+}
+.landing-page .redesigned-domains .domain-item:nth-child(3n) {
+  background: linear-gradient(135deg, rgb(255 251 247 / 89%), rgb(255 237 229 / 58%));
+}
+.landing-page .redesigned-domains .domain-item:hover,
+.landing-page .redesigned-domains .domain-item:focus-visible {
+  transform: translateY(-5px) scale(1.01);
+  border-color: rgb(255 255 255 / 98%);
+  background: linear-gradient(135deg, rgb(255 249 246 / 94%), rgb(255 231 222 / 70%));
+  box-shadow:
+    inset 0 1px 0 #fff,
+    0 18px 30px rgb(25 57 108 / 14%);
+}
+.landing-page .redesigned-domains .domain-item:first-child {
+  border-color: rgb(255 177 159 / 76%);
+  background: linear-gradient(135deg, rgb(255 251 248 / 93%), rgb(255 236 228 / 70%));
+}
+
+/* The process timeline is deliberately wider than the editorial content sections. */
+.landing-page .workflow-wrap > .shell {
+  width: min(100% - 3rem, 1440px);
+  max-width: none;
+}
+.landing-page .workflow-diagram {
+  width: 100%;
+}
+@media (max-width: 640px) {
+  .landing-page .workflow-wrap > .shell { width: min(100% - 2rem, 1440px); }
+}
+
+/* Scroll-revealed roadmap replaces the horizontal hover carousel. */
+.landing-page .roadmap-wrap > .shell { width: min(100% - 3rem, 1120px); }
+.landing-page .roadmap {
+  position: relative;
+  display: grid;
+  gap: 1.4rem;
+  padding: .75rem 0;
+}
+.landing-page .roadmap::before {
+  content: '';
+  position: absolute;
+  top: 1.5rem;
+  bottom: 1.5rem;
+  left: 50%;
+  width: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(#9fc2fb, #ffb6a5 48%, #94d5bd);
+  box-shadow: 0 0 18px rgb(74 131 220 / 28%);
+}
+.landing-page .roadmap-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 74px 1fr;
+  align-items: center;
+  min-height: 154px;
+}
+.landing-page .roadmap-pin {
+  grid-column: 2;
+  grid-row: 1;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  justify-self: center;
+  border: 7px solid #f5f7fa;
+  border-radius: 50%;
+  background: #ff4c2a;
+  color: #fff;
+  box-shadow: 0 7px 16px rgb(240 77 50 / 25%);
+  z-index: 1;
+}
+.landing-page .roadmap-pin span { font-size: .82rem; font-weight: 800; }
+.landing-page .roadmap-card {
+  grid-column: 1;
+  grid-row: 1;
+  padding: 1.45rem 1.55rem;
+  border: 1px solid rgb(255 255 255 / 86%);
+  border-radius: 22px;
+  background: linear-gradient(135deg, rgb(255 255 255 / 89%), rgb(246 249 255 / 58%));
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 96%), 0 14px 28px rgb(25 57 108 / 10%);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+}
+.landing-page .roadmap-item:nth-child(even) .roadmap-card { grid-column: 3; background: linear-gradient(135deg, rgb(248 255 252 / 90%), rgb(229 247 241 / 58%)); }
+.landing-page .roadmap-item:nth-child(3n) .roadmap-card { background: linear-gradient(135deg, rgb(255 251 247 / 90%), rgb(255 237 229 / 60%)); }
+.landing-page .roadmap-card small { color: #1761c8; font-size: .7rem; font-weight: 800; }
+.landing-page .roadmap-card h3 { margin: .35rem 0 .45rem; font-size: 1.08rem; }
+.landing-page .roadmap-card p { color: #65728a; font-size: .82rem; line-height: 1.5; }
+@media (max-width: 700px) {
+  .landing-page .roadmap-wrap > .shell { width: min(100% - 2rem, 1120px); }
+  .landing-page .roadmap::before { left: 25px; }
+  .landing-page .roadmap-item { grid-template-columns: 52px 1fr; min-height: auto; }
+  .landing-page .roadmap-pin { grid-column: 1; align-self: start; width: 50px; height: 50px; border-width: 5px; }
+  .landing-page .roadmap-card,
+  .landing-page .roadmap-item:nth-child(even) .roadmap-card { grid-column: 2; }
+}
+
+/* Primary gateway destinations feel tactile without shifting the grid layout. */
+.landing-page .gateway-card button {
+  position: relative;
+  z-index: 0;
+  transform: translateZ(0);
+  transition:
+    transform .28s cubic-bezier(.16, 1, .3, 1),
+    background-color .28s ease,
+    box-shadow .28s ease,
+    color .28s ease;
+}
+.landing-page .gateway-card button svg,
+.landing-page .gateway-card button span {
+  transition: transform .28s cubic-bezier(.16, 1, .3, 1), color .28s ease;
+}
+.landing-page .gateway-card button:hover,
+.landing-page .gateway-card button:focus-visible {
+  z-index: 1;
+  transform: translateY(-10px) scale(1.045);
+  background: #fff;
+  color: #ff4c2a;
+  box-shadow: 0 18px 30px rgb(16 42 88 / 20%);
+}
+.landing-page .gateway-card button:hover svg,
+.landing-page .gateway-card button:focus-visible svg {
+  transform: translateY(-4px) scale(1.13) rotate(-4deg);
+}
+.landing-page .gateway-card button:active { transform: translateY(-4px) scale(1.015); }
+@media (prefers-reduced-motion: reduce) {
+  .landing-page .gateway-card button,
+  .landing-page .gateway-card button svg,
+  .landing-page .gateway-card button span { transition: none; }
+  .landing-page .gateway-card button:hover,
+  .landing-page .gateway-card button:focus-visible { transform: none; }
+}
+
+/* Glossy route surface with a playful, dotted route that bends into every stop. */
+.landing-page .roadmap-wrap {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgb(242 248 255 / 94%), rgb(250 252 255 / 74%) 48%, rgb(255 247 243 / 88%)),
+    #f5f7fa;
+}
+.landing-page .roadmap-wrap::before,
+.landing-page .roadmap-wrap::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  filter: blur(22px);
+  pointer-events: none;
+}
+.landing-page .roadmap-wrap::before {
+  width: 34rem;
+  height: 34rem;
+  top: 8rem;
+  left: -15rem;
+  background: radial-gradient(circle, rgb(105 163 255 / 26%), rgb(105 163 255 / 0%) 68%);
+}
+.landing-page .roadmap-wrap::after {
+  width: 31rem;
+  height: 31rem;
+  right: -13rem;
+  bottom: 5rem;
+  background: radial-gradient(circle, rgb(255 145 112 / 22%), rgb(255 145 112 / 0%) 68%);
+}
+.landing-page .roadmap::before {
+  z-index: 0;
+  width: 3px;
+  background: radial-gradient(circle, #75a7ed 1.4px, transparent 1.9px) center top / 3px 11px repeat-y;
+  box-shadow: 0 0 14px rgb(74 131 220 / 22%);
+}
+.landing-page .roadmap-item { z-index: 1; }
+.landing-page .roadmap-item::before {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  top: 50%;
+  width: 29%;
+  height: 74px;
+  pointer-events: none;
+}
+.landing-page .roadmap-item:nth-child(odd)::before {
+  right: 50%;
+  border-top: 2px dashed rgb(96 148 224 / 65%);
+  border-right: 2px dashed rgb(96 148 224 / 65%);
+  border-radius: 0 76px 0 0;
+}
+.landing-page .roadmap-item:nth-child(even)::before {
+  left: 50%;
+  border-top: 2px dashed rgb(244 135 102 / 65%);
+  border-left: 2px dashed rgb(244 135 102 / 65%);
+  border-radius: 76px 0 0 0;
+}
+.landing-page .roadmap-card {
+  position: relative;
+  z-index: 1;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 98%),
+    inset 0 -1px 0 rgb(155 174 207 / 12%),
+    0 16px 34px rgb(25 57 108 / 12%);
+}
+.landing-page .roadmap-pin {
+  background: linear-gradient(145deg, #ff684e, #ef3d24);
+  box-shadow: 0 7px 16px rgb(240 77 50 / 30%), inset 0 1px 0 rgb(255 255 255 / 42%);
+}
+@media (max-width: 700px) {
+  .landing-page .roadmap-item::before { display: none; }
+}
+
+/* Rounded, dimensional pop-up state for the gateway navigation. */
+.landing-page .gateway-card { perspective: 1000px; }
+.landing-page .gateway-card button {
+  transform-style: preserve-3d;
+  transform-origin: center bottom;
+}
+.landing-page .gateway-card button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgb(255 255 255 / 82%), rgb(255 246 242 / 38%) 48%, rgb(255 255 255 / 0%));
+  transition: opacity .28s ease;
+}
+.landing-page .gateway-card button > svg,
+.landing-page .gateway-card button > span { position: relative; z-index: 1; }
+.landing-page .gateway-card button > svg {
+  z-index: 2;
+  flex: none;
+  opacity: 1;
+  visibility: visible;
+  will-change: transform;
+}
+.landing-page .gateway-card button:hover,
+.landing-page .gateway-card button:focus-visible {
+  border-radius: 18px;
+  transform: translateY(-14px) rotateX(5deg) scale(1.055);
+  box-shadow:
+    0 28px 38px rgb(10 31 64 / 22%),
+    0 8px 14px rgb(10 31 64 / 12%),
+    inset 0 1px 0 rgb(255 255 255 / 96%);
+}
+.landing-page .gateway-card button:hover::before,
+.landing-page .gateway-card button:focus-visible::before { opacity: 1; }
+.landing-page .gateway-card button:active {
+  transform: translateY(-6px) rotateX(2deg) scale(1.02);
+  box-shadow: 0 12px 22px rgb(10 31 64 / 18%), inset 0 1px 0 rgb(255 255 255 / 88%);
+}
+@media (prefers-reduced-motion: reduce) {
+  .landing-page .gateway-card button:hover,
+  .landing-page .gateway-card button:focus-visible,
+  .landing-page .gateway-card button:active { transform: none; }
+}
+
+/* Every roadmap stop rises as one connected, tactile step on hover. */
+.landing-page .roadmap { perspective: 1100px; }
+.landing-page .roadmap-item { transition: z-index .01s linear; }
+.landing-page .roadmap-card,
+.landing-page .roadmap-pin {
+  transition:
+    transform .3s cubic-bezier(.16, 1, .3, 1),
+    box-shadow .3s ease,
+    border-color .3s ease,
+    filter .3s ease;
+}
+.landing-page .roadmap-item:hover { z-index: 3; }
+.landing-page .roadmap-item:hover .roadmap-card {
+  transform: translateY(-10px) scale(1.025) rotateX(2deg);
+  border-color: rgb(255 255 255 / 98%);
+  box-shadow:
+    0 25px 40px rgb(20 49 92 / 19%),
+    0 8px 16px rgb(20 49 92 / 9%),
+    inset 0 1px 0 #fff;
+  filter: saturate(1.08);
+}
+.landing-page .roadmap-item:hover .roadmap-pin {
+  transform: none;
+  box-shadow: 0 7px 16px rgb(240 77 50 / 30%), inset 0 1px 0 rgb(255 255 255 / 42%);
+}
+@media (prefers-reduced-motion: reduce) {
+  .landing-page .roadmap-card,
+  .landing-page .roadmap-pin { transition: none; }
+  .landing-page .roadmap-item:hover .roadmap-card,
+  .landing-page .roadmap-item:hover .roadmap-pin { transform: none; }
+}
+
+/* A stronger hover layer makes the active stage unmistakable in a long route. */
+.landing-page .roadmap-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(115deg, transparent 18%, rgb(255 255 255 / 76%) 48%, transparent 77%);
+  transform: translateX(-80%);
+  transition: opacity .24s ease, transform .55s cubic-bezier(.16, 1, .3, 1);
+}
+.landing-page .roadmap-item:hover .roadmap-card {
+  transform: translateY(-15px) scale(1.045) rotateX(3deg);
+  box-shadow:
+    0 32px 50px rgb(20 49 92 / 24%),
+    0 10px 20px rgb(20 49 92 / 11%),
+    inset 0 1px 0 #fff;
+}
+.landing-page .roadmap-item:hover .roadmap-card::after {
+  opacity: .72;
+  transform: translateX(80%);
+}
+.landing-page .roadmap-item:hover::before {
+  filter: drop-shadow(0 0 5px rgb(87 145 233 / 65%));
+}
+.landing-page .roadmap-item:hover .roadmap-pin {
+  /* The waypoint stays still; the adjacent card is the hover target. */
+  transform: none;
+  box-shadow: 0 7px 16px rgb(240 77 50 / 30%), inset 0 1px 0 rgb(255 255 255 / 42%);
+}
+
+/* Match the roadmap's glossy lift on each workspace choice. */
+.landing-page .role-portal-grid { perspective: 1100px; }
+@keyframes role-card-pop {
+  0% { transform: translateY(0) scale(1); }
+  70% { transform: translateY(-19px) scale(1.055) rotateX(3deg); }
+  100% { transform: translateY(-15px) scale(1.04) rotateX(3deg); }
+}
+.landing-page .role-portal-card::before {
+  transition: opacity .25s ease, transform .55s cubic-bezier(.16, 1, .3, 1);
+}
+.landing-page .role-portal-card:hover {
+  animation: role-card-pop .36s cubic-bezier(.16, 1, .3, 1) both;
+  transform: translateY(-15px) scale(1.04) rotateX(3deg);
+  background: url('/role-card-hover-gradient.png') center / cover no-repeat;
+  color: #fff;
+  box-shadow:
+    inset 0 1px 0 #fff,
+    0 32px 50px rgb(20 49 92 / 22%),
+    0 10px 20px rgb(20 49 92 / 10%);
+}
+.landing-page .role-portal-card:hover h3 { color: #fff; }
+.landing-page .role-portal-card:hover .role-label { color: #fff; }
+.landing-page .role-portal-card:hover ul { color: #fff; }
+.landing-page .role-portal-card:hover .card-link { color: #fff; }
+.landing-page .role-portal-card:hover .role-icon {
+  background: rgb(255 255 255 / 13%);
+  border-color: rgb(255 255 255 / 20%);
+  color: #fff;
+}
+.landing-page .role-portal-card:hover li svg,
+.landing-page .role-portal-card:hover .card-link svg { color: #fff; }
+
+/* Shared home-page visual language for every authenticated workspace. */
+.portal-app {
+  --portal-navy: #162d5e;
+  --portal-orange: #ff4c2a;
+  --portal-line: #e4eaf2;
+  --portal-surface: #fff;
+  background: #f7f9fc;
+}
+.portal-app .dashboard-layout {
+  min-height: calc(100vh - 87px);
+  background:
+    radial-gradient(circle at 100% 0, rgb(255 125 96 / 12%), transparent 27rem),
+    radial-gradient(circle at 0 100%, rgb(85 145 238 / 10%), transparent 31rem),
+    #f7f9fc;
+}
+.portal-app .sidebar {
+  border-right-color: var(--portal-line);
+  box-shadow: 10px 0 26px rgb(18 45 94 / 5%);
+}
+.portal-app .sidebar-link {
+  margin: .18rem 0;
+  border-radius: 9px;
+  border-left: 0;
+  transition: transform .2s cubic-bezier(.16, 1, .3, 1), background-color .2s ease, color .2s ease;
+}
+.portal-app .sidebar-link:hover {
+  transform: translateX(4px);
+  background: #fff4f0;
+  color: var(--portal-orange);
+}
+.portal-app .sidebar-link.active {
+  background: linear-gradient(90deg, #fff0eb, #fff8f5);
+  color: var(--portal-orange);
+  box-shadow: inset 3px 0 0 var(--portal-orange);
+}
+.portal-app .sidebar-link.active svg { stroke: currentColor; }
+.portal-app .dashboard-main {
+  padding: clamp(1.5rem, 3vw, 2.75rem);
+}
+.portal-app .dashboard-main > * {
+  animation: portal-content-rise .42s cubic-bezier(.16, 1, .3, 1) both;
+}
+.portal-app .metric-card,
+.portal-app .ui-card,
+.portal-app .table-container,
+.portal-app .cards-grid > article,
+.portal-app .cards-grid > div {
+  border-radius: 16px;
+  border-color: var(--portal-line);
+  box-shadow: 0 10px 25px rgb(18 45 94 / 7%);
+}
+.portal-app .metric-card {
+  border-top: 3px solid var(--portal-orange);
+  transition: transform .22s cubic-bezier(.16, 1, .3, 1), box-shadow .22s ease, border-color .22s ease;
+}
+.portal-app .metric-card:hover {
+  transform: translateY(-5px);
+  border-color: #ffb3a2;
+  box-shadow: 0 18px 32px rgb(18 45 94 / 12%);
+}
+.portal-app .metric-icon { background: #fff2ee !important; color: var(--portal-orange) !important; }
+.portal-app .btn-primary,
+.portal-app .btn-saffron,
+.portal-app .btn-navy {
+  background: var(--portal-orange);
+  border-color: var(--portal-orange);
+  box-shadow: 0 8px 16px rgb(255 76 42 / 20%);
+}
+.portal-app .btn-primary:hover,
+.portal-app .btn-saffron:hover,
+.portal-app .btn-navy:hover { background: #df391b; }
+.portal-app .btn-outline { border-color: var(--portal-orange); color: var(--portal-orange); }
+.portal-app .btn-outline:hover { background: var(--portal-orange); color: #fff; }
+.portal-app .custom-table th { background: #fff4f0; color: var(--portal-navy); }
+.portal-app .custom-table tr:hover td { background: #fffaf8; }
+.portal-app input:focus,
+.portal-app select:focus,
+.portal-app textarea:focus {
+  border-color: var(--portal-orange) !important;
+  box-shadow: 0 0 0 3px rgb(255 76 42 / 13%) !important;
+}
+.portal-app .status-badge { border-radius: 999px; }
+@keyframes portal-content-rise {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .portal-app .dashboard-main > *,
+  .portal-app .metric-card,
+  .portal-app .sidebar-link { animation: none; transition: none; }
+  .portal-app .metric-card:hover,
+  .portal-app .sidebar-link:hover { transform: none; }
+}
+
+/* Sandbox workflow surfaces. */
+.sandbox-page-heading { margin-bottom: 1.7rem; max-width: 720px; }
+.sandbox-page-heading h1 { margin: .3rem 0 .5rem; font-size: clamp(1.8rem, 3vw, 2.5rem); color: #162d5e; }
+.sandbox-page-heading > p:last-child { color: #65728a; line-height: 1.6; }
+.sandbox-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; margin-bottom: 1.25rem; }
+.sandbox-panel { padding: 1.4rem; margin-bottom: 1.25rem; }
+.sandbox-panel h2 { margin: 0; color: #162d5e; font-size: 1.08rem; }
+.sandbox-panel label { display: grid; gap: .42rem; margin-top: 1rem; color: #32435f; font-size: .77rem; font-weight: 800; }
+.sandbox-panel input,.sandbox-panel select,.sandbox-panel textarea { width: 100%; padding: .72rem .8rem; border: 1px solid #cfd9e7; border-radius: 9px; color: #263851; font: inherit; font-size: .82rem; background: #fff; }
+.sandbox-panel textarea { min-height: 72px; resize: vertical; line-height: 1.45; }
+.sandbox-panel > .btn { margin-top: 1rem; }
+.sandbox-panel-heading { display: flex; align-items: center; gap: .7rem; color: #ff4c2a; }
+.sandbox-panel-heading p { margin: .18rem 0 0; color: #71809a; font-size: .76rem; }
+.sandbox-two-column { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; }
+.sandbox-policy-list { display: grid; gap: .85rem; padding: .4rem 0 0; margin: 1.2rem 0; list-style: none; color: #516179; font-size: .84rem; }
+.sandbox-policy-list li { display: flex; align-items: center; gap: .55rem; }
+.sandbox-policy-list svg { color: #16835f; width: 17px; }
+.sandbox-callout { display: flex; gap: .55rem; align-items: center; padding: .85rem; border-radius: 10px; background: #fff4f0; color: #a33420; font-size: .78rem; font-weight: 700; }
+.sandbox-review { margin-top: 0; }
+.sandbox-review .sandbox-panel-heading { flex-wrap: wrap; }
+.sandbox-status { margin-left: auto; padding: .38rem .6rem; border-radius: 999px; font-size: .72rem; font-weight: 800; }
+.sandbox-status.passed { color: #087450; background: #ddf7eb; }
+.sandbox-status.failed { color: #ad2d1a; background: #fff0ec; }
+.sandbox-report-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(180px, .7fr); gap: 2rem; margin: 1.45rem 0; }
+.sandbox-score-row { display: grid; grid-template-columns: 145px 1fr 32px; gap: .75rem; align-items: center; margin: .8rem 0; color: #314360; font-size: .8rem; }
+.sandbox-score-row small { color: #8290a5; font-weight: 700; }
+.sandbox-score-row > div { height: 8px; overflow: hidden; border-radius: 99px; background: #edf1f6; }
+.sandbox-score-row i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #ff7658, #ffb19e); }
+.sandbox-score-row b { color: #162d5e; text-align: right; }
+.sandbox-run-summary { display: grid; grid-template-columns: 1fr 1fr; gap: .4rem .8rem; align-content: center; padding: 1rem; border-radius: 12px; background: #f7f9fc; }
+.sandbox-run-summary strong { color: #ff4c2a; font-size: 1rem; }
+.sandbox-run-summary span { color: #78869b; font-size: .73rem; }
+.sandbox-actions { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding-top: 1rem; border-top: 1px solid #e6ebf2; }
+.sandbox-actions p,.sandbox-decision { color: #52637b; font-size: .8rem; }
+.sandbox-actions > div { display: flex; gap: .6rem; flex-wrap: wrap; }
+.sandbox-decision { margin: 1rem 0 0; font-weight: 700; }
+.sandbox-success { display: flex; gap: .4rem; align-items: center; margin: .9rem 0 0; color: #087450; font-size: .8rem; font-weight: 700; }
+.sandbox-milestones { display: grid; grid-template-columns: repeat(4, 1fr); margin: 1.2rem 0; }
+.sandbox-milestones > div { position: relative; display: grid; justify-items: center; gap: .5rem; text-align: center; color: #8491a5; font-size: .72rem; }
+.sandbox-milestones > div:not(:last-child)::after { content: ''; position: absolute; top: 15px; left: 58%; width: 84%; height: 2px; background: #dde4ee; }
+.sandbox-milestones span { position: relative; z-index: 1; display: grid; place-items: center; width: 31px; height: 31px; border-radius: 50%; background: #edf1f6; color: #7a899e; font-size: .75rem; }
+.sandbox-milestones .active { color: #162d5e; }
+.sandbox-milestones .active span { color: #fff; background: #ff4c2a; }
+.sandbox-milestones .active:not(:last-child)::after { background: #ff9e8a; }
+.sandbox-history { display: grid; gap: .6rem; margin-top: 1rem; }
+.sandbox-history span { display: grid; grid-template-columns: 1fr 90px 90px; align-items: center; padding: .7rem .8rem; border-radius: 9px; background: #f8fafc; color: #32435f; font-size: .8rem; }
+.sandbox-history b { color: #162d5e; }
+.sandbox-history em { color: #087450; font-style: normal; font-weight: 800; }.sandbox-history em.failed { color: #ad2d1a; }
+@media (max-width: 780px) { .sandbox-grid,.sandbox-report-grid { grid-template-columns: 1fr; }.sandbox-actions { align-items: flex-start; flex-direction: column; }.sandbox-two-column { grid-template-columns: 1fr; }.sandbox-milestones { overflow-x: auto; min-width: 560px; }.sandbox-panel { overflow-x: auto; } }
+
+/* Government-source connector cards. */
+.integration-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+.integration-card { padding: 1.5rem; }
+.integration-card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.2rem; }
+.integration-icon { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 14px; background: #fff2ee; color: #ff4c2a; }
+.integration-state { padding: .35rem .6rem; border-radius: 999px; background: #f1f4f8; color: #71809a; font-size: .71rem; font-weight: 800; }
+.integration-state.connected { background: #ddf7eb; color: #087450; }
+.integration-card h2,.integration-audit h2 { margin: 0; color: #162d5e; font-size: 1.12rem; }
+.integration-card > p,.integration-audit p { color: #65728a; font-size: .83rem; line-height: 1.6; }
+.integration-fields { display: grid; gap: .55rem; margin: 1.3rem 0; padding: 1rem; border: 1px solid #e6ebf2; border-radius: 10px; color: #53647c; font-size: .77rem; }
+.integration-fields b { color: #32435f; margin-bottom: .15rem; }
+.integration-fields span,.integration-sync { display: flex; gap: .45rem; align-items: center; }
+.integration-fields svg,.integration-sync svg { color: #16835f; }
+.integration-sync { color: #087450 !important; font-size: .76rem !important; font-weight: 700; }
+.integration-audit { display: flex; justify-content: space-between; gap: 2rem; align-items: center; margin-top: 1.25rem; padding: 1.5rem; background: linear-gradient(135deg, #fff8f5, #fff); }
+.integration-audit > div { max-width: 620px; }.integration-audit ul { display: grid; gap: .55rem; margin: 0; padding: 0; list-style: none; color: #53647c; font-size: .78rem; }.integration-audit li { display: flex; gap: .45rem; align-items: center; }.integration-audit li svg { color: #16835f; width: 16px; }
+@media (max-width: 780px) { .integration-grid { grid-template-columns: 1fr; }.integration-audit { align-items: flex-start; flex-direction: column; gap: 1rem; } }
+
+/* Startup match and eligibility checker. */
+.eligibility-summary { display: grid; grid-template-columns: 185px minmax(0, 1fr) auto; gap: 1.5rem; align-items: center; padding: 1.4rem; margin-bottom: 1.25rem; }
+.eligibility-score { display: grid; gap: .25rem; padding: 1rem; border-radius: 13px; background: linear-gradient(135deg, #ecfbf3, #f8fffb); }
+.eligibility-score span,.eligibility-score small,.eligibility-updated { color: #65758a; font-size: .73rem; }.eligibility-score strong { color: #087450; font-size: 1.25rem; }.eligibility-score small { display: flex; align-items: center; gap: .3rem; color: #087450; font-weight: 700; }
+.eligibility-summary h2 { margin: 0; color: #162d5e; font-size: 1.15rem; }.eligibility-summary p { margin: .3rem 0 .8rem; color: #65728a; font-size: .8rem; }
+.eligibility-grid { display: grid; grid-template-columns: 1.35fr .85fr; gap: 1.25rem; }
+.eligibility-checks { display: grid; gap: .75rem; margin-top: 1.15rem; }.eligibility-checks > div { display: grid; grid-template-columns: 30px 1fr auto; gap: .65rem; align-items: center; padding: .65rem .1rem; border-bottom: 1px solid #edf0f5; }.eligibility-checks > div:last-child { border-bottom: 0; }.eligibility-checks > div > span { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; }.eligibility-checks .pass { background: #def8ec; color: #087450; }.eligibility-checks .review { background: #fff1eb; color: #c23d26; }.eligibility-checks b { display: block; color: #34455f; font-size: .8rem; }.eligibility-checks small { display: block; margin-top: .15rem; color: #78869b; font-size: .72rem; }.eligibility-checks em { color: #087450; font-size: .7rem; font-style: normal; font-weight: 800; }.eligibility-checks > div:last-child em { color: #aa4c1d; }
+.match-list { display: grid; gap: .75rem; margin-top: 1.15rem; }.match-list article { display: grid; grid-template-columns: 58px 1fr auto; gap: .9rem; align-items: center; padding: .85rem; border: 1px solid #e7ebf1; border-radius: 11px; }.match-score { display: grid; place-items: center; width: 54px; height: 54px; border-radius: 50%; background: #fff2ee; color: #e3482b; }.match-score strong { font-size: .85rem; }.match-score span { font-size: .6rem; font-weight: 700; }.match-list h3 { margin: 0; color: #162d5e; font-size: .85rem; }.match-list p { margin: .25rem 0 0; color: #75839a; font-size: .72rem; }
+@media (max-width: 780px) { .eligibility-summary,.eligibility-grid { grid-template-columns: 1fr; }.eligibility-updated { display: none; }.match-list article { grid-template-columns: 54px 1fr; }.match-list .btn { grid-column: 2; justify-self: start; } }
+.landing-page .role-portal-card:hover::before {
+  opacity: 0;
+  transform: translateX(15%) scale(1.12);
+}
+.landing-page .role-portal-card:hover .role-icon {
+  transform: translateY(-4px) scale(1.13) rotate(-5deg);
+  box-shadow: 0 12px 20px rgb(25 57 108 / 14%);
+}
+@media (prefers-reduced-motion: reduce) {
+  .landing-page .role-portal-card:hover { animation: none; transform: none; }
+  .landing-page .role-portal-card::before { transition: none; }
+}
+
+/* The three proof cards share the same tactile hover language as the workspaces. */
+.landing-page .why-section .three-card-grid { perspective: 1100px; }
+.landing-page .why-section .info-card::after {
+  transition: transform .5s cubic-bezier(.16, 1, .3, 1), opacity .25s ease;
+}
+.landing-page .why-section .info-card:hover {
+  transform: translateY(-15px) scale(1.04) rotateX(3deg);
+  box-shadow:
+    inset 0 1px 0 #fff,
+    0 32px 50px rgb(20 49 92 / 22%),
+    0 10px 20px rgb(20 49 92 / 10%);
+}
+.landing-page .why-section .info-card:hover::after {
+  transform: translate(-15%, 12%) scale(1.25);
+  opacity: .94;
+}
+@media (prefers-reduced-motion: reduce) {
+  .landing-page .why-section .info-card:hover { transform: none; }
+  .landing-page .why-section .info-card::after { transition: none; }
+}
+
+/* A quiet luminous backdrop ties the landing sections together without competing with content. */
+.landing-page main {
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse 44% 32% at 8% 24%, rgb(127 178 255 / 15%), transparent 74%),
+    radial-gradient(ellipse 40% 30% at 92% 55%, rgb(255 164 132 / 13%), transparent 76%),
+    linear-gradient(180deg, #fff 0%, #fbfcff 48%, #fff 100%);
+}
+.landing-page main::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: .42;
+  background-image:
+    linear-gradient(rgb(61 109 181 / 4%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(61 109 181 / 4%) 1px, transparent 1px),
+    radial-gradient(circle at 72% 21%, rgb(255 255 255 / 95%) 0 1px, transparent 1.4px);
+  background-size: 54px 54px, 54px 54px, 9px 9px;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 8%, #000 92%, transparent);
+}
+.landing-page main > section { position: relative; z-index: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .landing-page .roadmap-card::after { transition: none; }
+}
+
+/* Luminous mesh background for the roadmap, kept pale enough for readable cards. */
+.landing-page .roadmap-wrap {
+  background:
+    radial-gradient(ellipse 58% 46% at 7% 8%, rgb(152 196 255 / 43%), transparent 73%),
+    radial-gradient(ellipse 46% 42% at 92% 18%, rgb(255 206 190 / 43%), transparent 72%),
+    radial-gradient(ellipse 52% 42% at 48% 88%, rgb(190 232 219 / 34%), transparent 72%),
+    linear-gradient(135deg, #eef6ff 0%, #f8f9ff 42%, #fff7f4 100%);
+}
+.landing-page .roadmap-wrap::before {
+  width: 42rem;
+  height: 42rem;
+  top: -11rem;
+  left: -17rem;
+  filter: blur(32px);
+  background: radial-gradient(circle, rgb(91 155 255 / 32%), rgb(122 181 255 / 0%) 68%);
+}
+.landing-page .roadmap-wrap::after {
+  width: 38rem;
+  height: 38rem;
+  right: -15rem;
+  bottom: -9rem;
+  filter: blur(32px);
+  background: radial-gradient(circle, rgb(255 138 101 / 27%), rgb(255 145 112 / 0%) 69%);
 }

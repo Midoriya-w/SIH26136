@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from 'motion/react';
 // Pages
 import Landing from '../pages/Landing';
 import Login from '../pages/auth/Login';
+import Sandbox from '../pages/Sandbox';
 
 // Startup Pages
 import StartupDashboard from '../pages/startup/Dashboard';
@@ -12,6 +13,7 @@ import StartupProfile from '../pages/startup/Profile';
 import StartupChallenges from '../pages/startup/Challenges';
 import ChallengeDetails from '../pages/startup/ChallengeDetails';
 import StartupApplications from '../pages/startup/Applications';
+import StartupMatchEligibility from '../pages/startup/MatchEligibility';
 
 // Government Pages
 import GovernmentDashboard from '../pages/government/Dashboard';
@@ -19,6 +21,7 @@ import GovernmentChallenges from '../pages/government/Challenges';
 import CreateChallenge from '../pages/government/CreateChallenge';
 import GovernmentStartups from '../pages/government/Startups';
 import GovernmentApplications from '../pages/government/Applications';
+import GovernmentIntegrations from '../pages/government/Integrations';
 
 // Evaluator Pages
 import EvaluatorDashboard from '../pages/evaluator/Dashboard';
@@ -53,6 +56,8 @@ const AppRoutes = ({ currentUser, onRoleChange }) => {
       <Route path="/startup/challenges" element={page(<StartupChallenges currentUser={currentUser} onRoleChange={onRoleChange} />)} />
       <Route path="/startup/challenges/:id" element={page(<ChallengeDetails currentUser={currentUser} onRoleChange={onRoleChange} />)} />
       <Route path="/startup/applications" element={page(<StartupApplications currentUser={currentUser} onRoleChange={onRoleChange} />)} />
+      <Route path="/startup/sandbox" element={page(<Sandbox role="startup" currentUser={currentUser} onRoleChange={onRoleChange} />)} />
+      <Route path="/startup/match-eligibility" element={page(<StartupMatchEligibility currentUser={currentUser} onRoleChange={onRoleChange} />)} />
 
       {/* Government Department Routes */}
       <Route path="/government/dashboard" element={page(<GovernmentDashboard currentUser={currentUser} onRoleChange={onRoleChange} />)} />
@@ -60,6 +65,8 @@ const AppRoutes = ({ currentUser, onRoleChange }) => {
       <Route path="/government/create-challenge" element={page(<CreateChallenge currentUser={currentUser} onRoleChange={onRoleChange} />)} />
       <Route path="/government/startups" element={page(<GovernmentStartups currentUser={currentUser} onRoleChange={onRoleChange} />)} />
       <Route path="/government/applications" element={page(<GovernmentApplications currentUser={currentUser} onRoleChange={onRoleChange} />)} />
+      <Route path="/government/sandbox" element={page(<Sandbox role="government" currentUser={currentUser} onRoleChange={onRoleChange} />)} />
+      <Route path="/government/integrations" element={page(<GovernmentIntegrations currentUser={currentUser} onRoleChange={onRoleChange} />)} />
 
       {/* Evaluator Routes */}
       <Route path="/evaluator/dashboard" element={page(<EvaluatorDashboard currentUser={currentUser} onRoleChange={onRoleChange} />)} />

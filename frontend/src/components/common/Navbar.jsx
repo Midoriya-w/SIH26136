@@ -1,12 +1,12 @@
  codex/redesign-samarth
 import React from 'react';
 import { Link as RouterLink, useNavigate, useLocation } from 'react-router-dom';
-import { CalendarDays, ChevronDown, FileText, Home, Landmark, Library, LogIn, Mail, Search, UserPlus } from 'lucide-react';
+import { BadgeCheck, ChevronDown, FileText, FlaskConical, Home, Landmark, Library, LogIn, Search, UserPlus } from 'lucide-react';
 
 const navItems = [
-  { label: 'Home', to: '/', icon: Home }, { label: 'Pages', to: '/how-it-works', icon: FileText },
-  { label: 'Department', to: '/government/challenges', icon: Landmark, menu: [{ label: 'Department overview', to: '/government/dashboard' }, { label: 'Manage challenges', to: '/government/challenges' }, { label: 'Post a challenge', to: '/government/create-challenge' }] }, { label: 'Events', to: '/success-stories', icon: CalendarDays },
-  { label: 'Resources', to: '/templates', icon: Library }, { label: 'Contact', to: '/contact', icon: Mail }
+  { label: 'Home', to: '/', icon: Home }, { label: 'Pages', to: '/government/sandbox', icon: FileText, menu: [{ label: 'Sandbox configuration', to: '/government/sandbox' }, { label: 'Data integrations', to: '/government/integrations' }] },
+  { label: 'Department', to: '/government/challenges', icon: Landmark, menu: [{ label: 'Department overview', to: '/government/dashboard' }, { label: 'Manage challenges', to: '/government/challenges' }, { label: 'Post a challenge', to: '/government/create-challenge' }] }, { label: 'Sandbox', to: '/startup/sandbox', icon: FlaskConical },
+  { label: 'Resources', to: '/templates', icon: Library }, { label: 'Match & Eligibility', to: '/startup/match-eligibility', icon: BadgeCheck }
 ];
 
 const Navbar = () => {

@@ -3,10 +3,13 @@ import { NavLink } from 'react-router-dom';
 import {
   LayoutDashboard,
   Rocket,
+  FlaskConical,
   FileText,
   User,
   PlusCircle,
   Building2,
+  DatabaseZap,
+  BadgeCheck,
   CheckSquare,
   Award,
   Layers,
@@ -18,7 +21,9 @@ const Sidebar = ({ role = 'startup' }) => {
     { to: '/startup/dashboard', label: 'Dashboard', icon: LayoutDashboard },
     { to: '/startup/profile', label: 'Startup Profile', icon: User },
     { to: '/startup/challenges', label: 'Govt Challenges', icon: Rocket },
-    { to: '/startup/applications', label: 'My Applications', icon: FileText }
+    { to: '/startup/applications', label: 'My Applications', icon: FileText },
+    { to: '/startup/sandbox', label: 'Solution Sandbox', icon: FlaskConical },
+    { to: '/startup/match-eligibility', label: 'Match & Eligibility', icon: BadgeCheck }
   ];
 
   const govtLinks = [
@@ -26,7 +31,9 @@ const Sidebar = ({ role = 'startup' }) => {
     { to: '/government/challenges', label: 'Manage Challenges', icon: Layers },
     { to: '/government/create-challenge', label: 'Post New Challenge', icon: PlusCircle },
     { to: '/government/applications', label: 'Pilot Applications', icon: Award },
-    { to: '/government/startups', label: 'Startup Directory', icon: Building2 }
+    { to: '/government/startups', label: 'Startup Directory', icon: Building2 },
+    { to: '/government/sandbox', label: 'Sandbox Configuration', icon: FlaskConical },
+    { to: '/government/integrations', label: 'Data Integrations', icon: DatabaseZap }
   ];
 
   const evaluatorLinks = [
